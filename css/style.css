@@ -157,7 +157,7 @@ main {
 
 .btn-primary {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 70px;
   background-color: #534436;
   color: #ffffff;
   padding: 10px 18px;
@@ -475,5 +475,227 @@ main {
 
   .courses-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   SECÇÃO HORÁRIOS
+========================= */
+
+.horarios-section {
+  padding: 80px 32px;
+  background-color: #ffffff;
+  scroll-margin-top: 90px;
+}
+
+.section-title-line {
+  width: 140px;
+  height: 5px;
+  background-color: #2f2f2f;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 45px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  color: #2f2f2f;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.section-title span {
+  font-size: 22px;
+}
+
+.horarios-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px 36px;
+}
+
+.horario-card {
+  border-left: 5px solid #2f2f2f;
+  padding-left: 22px;
+  min-height: 120px;
+}
+
+.horario-card h3 {
+  font-size: 25px;
+  color: #2f2f2f;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.horario-info {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 8px;
+}
+
+.horario-icon {
+  font-size: 34px;
+  color: #a30f2d;
+}
+
+.horario-info strong {
+  font-size: 38px;
+  color: #2f2f2f;
+  font-weight: 800;
+}
+
+.horario-card p {
+  font-size: 13px;
+  color: #333333;
+  line-height: 1.5;
+  max-width: 240px;
+}
+
+/* Responsivo */
+@media (max-width: 980px) {
+  .horarios-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section-title h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .horarios-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .horarios-section {
+    padding: 60px 20px;
+  }
+
+  .section-title h2 {
+    font-size: 24px;
+  }
+
+  .horario-card h3 {
+    font-size: 21px;
+  }
+
+  .horario-info strong {
+    font-size: 32px;
+  }
+}
+/* =========================
+   RODAPÉ
+========================= */
+
+.footer {
+  background-color: #f4f4f4;
+  padding: 55px 32px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 70px;
+  align-items: flex-start;
+}
+
+.footer-about {
+  max-width: 330px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.footer-logo .logo-icon {
+  width: 22px;
+  height: 22px;
+  border: 4px solid #947d00;
+  border-radius: 6px;
+  position: relative;
+}
+
+.footer-logo .logo-icon::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #f4f4f4;
+  right: -5px;
+  bottom: -5px;
+}
+
+.footer-logo span {
+  color: #06363d;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.footer-about p {
+  color: #06363d;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-column h3 {
+  color: #947d00;
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.footer-column a {
+  text-decoration: none;
+  color: #06363d;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-column a:hover {
+  color: #947d00;
+  transform: translateX(3px);
+}
+
+/* Responsivo */
+@media (max-width: 980px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 45px 20px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-logo span {
+    font-size: 24px;
   }
 }

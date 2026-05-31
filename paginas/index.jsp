@@ -20,7 +20,7 @@
         <ul>
           <li><a href="#" class="active">Inicio</a></li>
           <li><a href="#cursos">Nossos Cursos</a></li>
-          <li><a href="#">Horarios</a></li>
+          <li><a href="#horarios">Horários</a></li>
           <li><a href="#">Login</a></li>
           <li><a href="#">Inscreva-se</a></li>
         </ul>
@@ -145,6 +145,125 @@
       </div>
     </div>
   </section>
+
+  <!-- SECÇÃO HORÁRIOS -->
+<section class="horarios-section" id="horarios">
+  <div class="section-container">
+
+
+    <div class="section-title">
+      <h2>Horários em números</h2>
+      <span>🔗</span>
+    </div>
+
+    <div class="horarios-grid">
+
+      <div class="horario-card">
+        <h3>Turmas disponíveis</h3>
+        <div class="horario-info">
+          <span class="horario-icon">👥</span>
+          <strong>12</strong>
+        </div>
+        <p>Turmas abertas para inscrição no semestre.</p>
+      </div>
+
+      <div class="horario-card">
+        <h3>Horários publicados</h3>
+        <div class="horario-info">
+          <span class="horario-icon">📅</span>
+          <strong>18</strong>
+        </div>
+        <p>Horários disponíveis para consulta pelos alunos.</p>
+      </div>
+
+      <div class="horario-card">
+        <h3>Disciplinas</h3>
+        <div class="horario-info">
+          <span class="horario-icon">📚</span>
+          <strong>7</strong>
+        </div>
+        <p>Disciplinas com turmas associadas.</p>
+      </div>
+
+      <div class="horario-card">
+        <h3>Vagas abertas</h3>
+        <div class="horario-info">
+          <span class="horario-icon">✅</span>
+          <strong>24</strong>
+        </div>
+        <p>Vagas disponíveis para inscrição.</p>
+      </div>
+
+      <div class="horario-card">
+        <h3>Turmas de manhã</h3>
+        <div class="horario-info">
+          <span class="horario-icon">🌤️</span>
+          <strong>5</strong>
+        </div>
+        <p>Turmas com horário no período da manhã.</p>
+      </div>
+
+      <div class="horario-card">
+        <h3>Turmas de tarde</h3>
+        <div class="horario-info">
+          <span class="horario-icon">🌙</span>
+          <strong>7</strong>
+        </div>
+        <p>Turmas com horário no período da tarde.</p>
+      </div>
+
+      <div class="horario-card">
+        <h3>Salas disponíveis</h3>
+        <div class="horario-info">
+          <span class="horario-icon">🏫</span>
+          <strong>9</strong>
+        </div>
+        <p>Salas associadas aos horários das turmas.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RODAPÉ -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-about">
+      <div class="footer-logo">
+        <div class="logo-icon"></div>
+        <span>GESTURMA</span>
+      </div>
+
+      <p>
+        O Gesturma é uma plataforma académica criada para facilitar
+        a gestão de turmas, horários, inscrições e balanceamento de alunos.
+      </p>
+    </div>
+
+    <div class="footer-column">
+      <h3>Plataforma</h3>
+      <a href="#">Início</a>
+      <a href="#cursos">Nossos Cursos</a>
+      <a href="#horarios">Horários</a>
+    </div>
+
+    <div class="footer-column">
+      <h3>Gestão Académica</h3>
+      <a href="#">Disciplinas</a>
+      <a href="#">Turmas</a>
+      <a href="#">Inscrições</a>
+    </div>
+
+    <div class="footer-column">
+      <h3>Sistema</h3>
+      <a href="#">Login</a>
+      <a href="#">Inscreva-se</a>
+      <a href="#">Administrador</a>
+    </div>
+
+  </div>
+</footer>
 
 </body>
 </html>
