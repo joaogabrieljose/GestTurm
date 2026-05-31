@@ -1,0 +1,479 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #eae9e9;
+  color: #06363d;
+}
+
+/* =========================
+   HEADER / NAVBAR
+========================= */
+
+header {
+  width: 100%;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #947d00;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar {
+  width: 100%;
+  max-width: 1220px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 36px;
+  font-weight: 700;
+  color: #06363d;
+  letter-spacing: -1px;
+}
+
+.logo-icon {
+  width: 28px;
+  height: 28px;
+  border: 5px solid #ffffff;
+  border-radius: 7px;
+  position: relative;
+}
+
+.logo-icon::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  right: -6px;
+  bottom: -6px;
+}
+
+.logo span {
+  color: #ffffff;
+  font-size: 15px;
+  border: 3px solid #ffffff;
+  border-radius: 12px;
+  padding: 0 6px;
+  margin-left: 2px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+nav a:hover,
+nav a.active {
+  color: #3f3e37;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+main {
+  min-height: calc(15vh - 78px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 32px;
+}
+
+.hero {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.hero-text {
+  padding-top: 70px;
+  transform: translateY(-45px);
+}
+
+.hero-text .tag {
+  color: #4a37c6;
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.hero-text h1 {
+  font-size: 43px;
+  line-height: 1.22;
+  color: #06363d;
+  margin-bottom: 32px;
+  max-width: 650px;
+  letter-spacing: 0.3px;
+}
+
+.hero-text h1 span {
+  color: #f58212;
+}
+
+.hero-text p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #073943;
+  max-width: 650px;
+  margin-bottom: 24px;
+}
+
+.hero-text strong {
+  font-weight: 600;
+}
+
+.btn-primary {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #534436;
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 15px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 800;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(83, 68, 54, 0.25);
+}
+
+/* =========================
+   BLOCO DE IMAGENS
+========================= */
+
+.hero-visual {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  height: 520px;
+}
+
+.visual-card {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #132326, #0b1114);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.18);
+}
+
+.visual-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Imagem grande do lado esquerdo */
+.visual-main {
+  width: 310px;
+  height: 300px;
+  left: 0;
+  top: 85px;
+  transform: rotate(-2deg);
+}
+
+/* Imagem pequena do lado direito em cima */
+.visual-top {
+  width: 320px;
+  height: 170px;
+  right: 0;
+  top: 0;
+  transform: rotate(3deg);
+}
+
+/* Cartão inferior direito */
+.investment-card {
+  position: absolute;
+  right: 5px;
+  top: 225px;
+  width: 315px;
+  min-height: 135px;
+  padding: 25px 28px;
+  background-color: #5f5621;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  color: #ffffff;
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.25);
+}
+
+.investment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 26px;
+  font-size: 15px;
+  color: #d8d8d8;
+  font-weight: 700;
+}
+
+.investment-header strong {
+  color: #00ff84;
+  font-size: 16px;
+}
+
+.investment-user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #26354b, #1d2638);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.investment-user h4 {
+  font-size: 17px;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.investment-user p {
+  font-size: 14px;
+  color: #d0d0d0;
+  margin: 0;
+}
+
+/* =========================
+   SECÇÃO NOSSOS CURSOS
+========================= */
+
+.courses-section {
+  padding: 20px 32px;
+  background-color: #f4f5f7;
+  scroll-margin-top: 90px;
+}
+
+.section-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-container h2 {
+  font-size: 32px;
+  color: #111827;
+  margin-bottom: 38px;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.course-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 24px 20px;
+  min-height: 160px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.1);
+}
+
+.course-card h3 {
+  font-size: 17px;
+  color: #111827;
+  margin-bottom: 14px;
+}
+
+.course-card p {
+  font-size: 14px;
+  color: #5b6472;
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+
+.course-card strong {
+  display: block;
+  font-size: 15px;
+  color: #947d00;
+  font-weight: 800;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 980px) {
+  header {
+    height: auto;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 18px;
+    padding: 20px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  main {
+    padding: 80px 32px 60px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 55px;
+    text-align: center;
+  }
+
+  .hero-text {
+    padding-top: 20px;
+    transform: none;
+  }
+
+  .hero-text h1,
+  .hero-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-text h1 {
+    font-size: 36px;
+    margin-bottom: 35px;
+  }
+
+  .hero-visual {
+    margin: 0 auto;
+    max-width: 620px;
+    height: 500px;
+  }
+
+  .visual-main {
+    left: 20px;
+  }
+
+  .visual-top {
+    right: 20px;
+  }
+
+  .investment-card {
+    right: 25px;
+  }
+
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .logo {
+    font-size: 30px;
+  }
+
+  main {
+    padding: 40px 20px;
+  }
+
+  .hero-text h1 {
+    font-size: 30px;
+  }
+
+  .hero-text p {
+    font-size: 16px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 16px 20px;
+    text-align: center;
+  }
+
+  .hero-visual {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .visual-card,
+  .investment-card {
+    position: relative;
+    width: 100%;
+    right: auto;
+    left: auto;
+    top: auto;
+    transform: none;
+  }
+
+  .visual-main {
+    height: 260px;
+  }
+
+  .visual-top {
+    height: 190px;
+  }
+
+  .investment-card {
+    min-height: auto;
+    padding: 22px;
+  }
+
+  .courses-section {
+    padding: 60px 20px;
+  }
+
+  .section-container h2 {
+    font-size: 26px;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+}
