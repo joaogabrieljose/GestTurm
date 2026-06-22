@@ -148,40 +148,14 @@ if (nomeAdmin != null && nomeAdmin.trim().length() > 0) {
             <div class="brand-icon">G</div>
             <span>Gesturma</span>
         </div>
-
         <nav class="menu">
 
-            <a href="admin.jsp" class="active">
-                Dashboard
-            </a>
-
-            <a href="#">
-                Utilizadores
-            </a>
-
-            <a href="#">
-                Alunos
-            </a>
-
-            <a href="#">
-                Coordenadores
-            </a>
-
-            <a href="#">
-                Disciplinas
-            </a>
-
-            <a href="#">
-                Turmas
-            </a>
-
-            <a href="#">
-                Inscrições
-            </a>
-
-            <a href="#">
-                Meu Perfil
-            </a>
+            <a href="admin.jsp" class="active"> Dashboard</a>
+            <a href="#" id="abrirUtilizadoresLink">Gestão Utilizadores</a>
+            <a href="#" id="abrirDisciplinasLink">Gestão de Disciplinas</a>
+            <a href="#" id="abrirTurmasLink">Gestão de Turmas</a>
+            <a href="#" id="abrirInscricoesLink">Gestão de Inscrições</a>
+            <a href="#" id="abrirPerfilLink"> Meu Perfil</a>
 
         </nav>
 
@@ -280,51 +254,6 @@ if (nomeAdmin != null && nomeAdmin.trim().length() > 0) {
             <div class="info-card pink">
                 <h3>Estado</h3>
                 <p>Ativo</p>
-            </div>
-
-        </section>
-
-        <!-- DADOS DO ADMIN -->
-        <section class="profile-section">
-
-            <div class="profile-card">
-
-                <h2>Dados do Administrador</h2>
-
-                <div class="profile-grid">
-
-                    <div class="profile-item">
-                        <span>Nome completo</span>
-                        <strong><%= nomeAdmin %></strong>
-                    </div>
-
-                    <div class="profile-item">
-                        <span>Email</span>
-                        <strong><%= emailAdmin %></strong>
-                    </div>
-
-                    <div class="profile-item">
-                        <span>Perfil</span>
-                        <strong>Administrador</strong>
-                    </div>
-
-                    <div class="profile-item">
-                        <span>Permissão</span>
-                        <strong>Gestão geral do sistema</strong>
-                    </div>
-
-                    <div class="profile-item">
-                        <span>Total de utilizadores</span>
-                        <strong><%= totalUtilizadores %></strong>
-                    </div>
-
-                    <div class="profile-item">
-                        <span>Total de inscrições</span>
-                        <strong><%= totalInscricoes %></strong>
-                    </div>
-
-                </div>
-
             </div>
 
         </section>
