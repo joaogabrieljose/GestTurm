@@ -335,3 +335,407 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================
+   MODAL MINHAS INSCRIÇÕES
+========================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 24, 39, 0.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 9999;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 560px;
+    max-height: 86vh;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+    animation: modalShow 0.25s ease;
+}
+
+.modal-wide {
+    max-width: 900px;
+}
+
+@keyframes modalShow {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+}
+
+.modal-top h2 {
+    color: #111827;
+    font-size: 24px;
+}
+
+.modal-close {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #f3f4f6;
+    color: #111827;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    transition: 0.2s ease;
+}
+
+.modal-close:hover {
+    background: #ef4444;
+    color: #ffffff;
+}
+
+.inscricoes-lista {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.inscricao-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 20px;
+}
+
+.inscricao-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.inscricao-top h3 {
+    font-size: 17px;
+    color: #111827;
+    margin-bottom: 5px;
+}
+
+.inscricao-top span {
+    display: inline-block;
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.estado-inscricao {
+    background: #dcfce7;
+    color: #15803d;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.inscricao-card p {
+    color: #4b5563;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.inscricao-card p strong {
+    color: #111827;
+}
+
+.empty-modal-message {
+    grid-column: 1 / -1;
+    background: #f9fafb;
+    border-radius: 16px;
+    padding: 28px;
+    color: #6b7280;
+    text-align: center;
+    font-weight: 700;
+}
+
+@media (max-width: 760px) {
+    .inscricoes-lista {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-box {
+        padding: 22px;
+    }
+}
+/* =========================
+   MODAL TURMAS DISPONÍVEIS
+========================= */
+
+.turmas-lista {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.turma-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 20px;
+}
+
+.turma-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.turma-top h3 {
+    font-size: 17px;
+    color: #111827;
+    margin-bottom: 5px;
+}
+
+.turma-top span {
+    display: inline-block;
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.periodo-aberto {
+    background: #dcfce7;
+    color: #15803d;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.periodo-fechado {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.turma-card p {
+    color: #4b5563;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.turma-card p strong {
+    color: #111827;
+}
+
+.turma-vagas {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 12px;
+    margin: 14px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 14px;
+    color: #374151;
+}
+
+.btn-inscrever {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: #12b6d8;
+    color: white;
+    padding: 12px 14px;
+    border-radius: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-inscrever:hover {
+    background: #0891b2;
+}
+
+.btn-inscrever.disabled {
+    background: #d1d5db;
+    color: #6b7280;
+    cursor: not-allowed;
+}
+
+@media (max-width: 760px) {
+    .turmas-lista {
+        grid-template-columns: 1fr;
+    }
+
+    .turma-vagas {
+        flex-direction: column;
+    }
+}
+/* =========================
+   MODAL HORÁRIOS
+========================= */
+
+.horarios-lista {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.horario-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    gap: 18px;
+}
+
+.horario-dia {
+    min-width: 120px;
+    background: #12b6d8;
+    color: white;
+    border-radius: 16px;
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.horario-dia strong {
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.horario-dia span {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.horario-info h3 {
+    font-size: 17px;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.horario-info p {
+    color: #4b5563;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 6px;
+}
+
+.horario-info p strong {
+    color: #111827;
+}
+
+@media (max-width: 760px) {
+    .horarios-lista {
+        grid-template-columns: 1fr;
+    }
+
+    .horario-card {
+        flex-direction: column;
+    }
+
+    .horario-dia {
+        width: 100%;
+    }
+}
+
+/* =========================
+   MODAL MEU PERFIL
+========================= */
+
+.perfil-modal-content {
+    text-align: center;
+}
+
+.perfil-avatar-grande {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #111827;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    font-weight: 800;
+    margin: 0 auto 16px auto;
+}
+
+.perfil-modal-content h3 {
+    font-size: 24px;
+    color: #111827;
+    margin-bottom: 6px;
+}
+
+.perfil-subtitulo {
+    color: #6b7280;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+.perfil-dados-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+}
+
+.perfil-dado-linha {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.perfil-dado-linha span {
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.perfil-dado-linha strong {
+    color: #111827;
+    font-size: 15px;
+    text-align: right;
+}
+
+@media (max-width: 600px) {
+    .perfil-dado-linha {
+        flex-direction: column;
+    }
+
+    .perfil-dado-linha strong {
+        text-align: left;
+    }
+}

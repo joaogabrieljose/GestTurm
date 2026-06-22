@@ -264,3 +264,47 @@ VALUES
 ((SELECT id FROM disciplinas WHERE codigo = 'SO'), '2026-02-01 00:00:00', '2026-02-15 23:59:59', 1),
 ((SELECT id FROM disciplinas WHERE codigo = 'PW'), '2026-02-01 00:00:00', '2026-02-15 23:59:59', 1),
 ((SELECT id FROM disciplinas WHERE codigo = 'RC'), '2026-02-01 00:00:00', '2026-02-15 23:59:59', 1);
+
+-- =====================================================
+-- INSERÇÃO DE 2 INSCRIÇÕES PARA O ALUNO
+-- =====================================================
+
+INSERT INTO inscricoes (aluno_id, disciplina_id, turma_id, estado)
+VALUES (
+    (SELECT a.id 
+     FROM alunos a 
+     INNER JOIN utilizadores u ON u.id = a.utilizador_id
+     WHERE u.email = 'aluno@gesturma.pt'),
+
+    (SELECT id 
+     FROM disciplinas 
+     WHERE codigo = 'ES'),
+
+    (SELECT t.id 
+     FROM turmas t
+     INNER JOIN disciplinas d ON d.id = t.disciplina_id
+     WHERE t.nome = 'Turma ES-A'
+     AND d.codigo = 'ES'),
+
+    'ATIVA'
+);
+
+INSERT INTO inscricoes (aluno_id, disciplina_id, turma_id, estado)
+VALUES (
+    (SELECT a.id 
+     FROM alunos a 
+     INNER JOIN utilizadores u ON u.id = a.utilizador_id
+     WHERE u.email = 'aluno@gesturma.pt'),
+
+    (SELECT id 
+     FROM disciplinas 
+     WHERE codigo = 'BD'),
+
+    (SELECT t.id 
+     FROM turmas t
+     INNER JOIN disciplinas d ON d.id = t.disciplina_id
+     WHERE t.nome = 'Turma BD-A'
+     AND d.codigo = 'BD'),
+
+    'ATIVA'
+);
