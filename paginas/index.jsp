@@ -141,8 +141,6 @@ try {
         %>
 
           <div class="course-card">
-            <h3><%= rsT.getString("disciplina") %></h3>
-
             <p>
               <strong>Turma:</strong> <%= rsT.getString("turma") %><br>
               <strong>Código:</strong> <%= rsT.getString("codigo_disciplina") %><br>
@@ -312,7 +310,6 @@ try {
             type="email" 
             id="email" 
             name="email" 
-            placeholder="exemplo@gesturma.pt" 
             required
           />
         </div>
@@ -323,7 +320,6 @@ try {
             type="password" 
             id="password" 
             name="password" 
-            placeholder="Digite a sua palavra-passe" 
             required
           />
         </div>
