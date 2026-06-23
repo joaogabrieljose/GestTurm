@@ -57,14 +57,11 @@ try {
 
         <nav class="menu">
             <a href="admin.jsp">Dashboard</a>
-            <a href="utilizadores.jsp">Utilizadores</a>
-
-            <a href="disciplinas.jsp" class="active">
-                Gestão de Disciplinas
-            </a>
-
+            <a href="utilizadores.jsp">Gestão Utilizadores</a>
+            <a href="disciplinas.jsp" class="active">Gestão de Disciplinas</a>
             <a href="turmas.jsp">Gestão de Turmas</a>
             <a href="inscricoes.jsp">Gestão de Inscrições</a>
+            <a href="#" id="abrirPerfilLink"> Meu Perfil</a>
         </nav>
 
         <div class="logout-area">

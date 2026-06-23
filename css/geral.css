@@ -921,3 +921,11 @@ body {
         align-items: flex-start;
     }
 }
+.estado-alterada {
+    background: #fef3c7;
+    color: #92400e;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}

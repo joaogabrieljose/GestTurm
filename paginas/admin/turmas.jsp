@@ -20,20 +20,31 @@ try {
 
     ps = con.prepareStatement(
         "SELECT " +
-        "u.id, u.nome, u.email, u.perfil, u.ativo, " +
-        "DATE_FORMAT(u.criado_em, '%d/%m/%Y %H:%i') AS criado_em, " +
-        "COALESCE(a.numero_aluno, '-') AS numero_aluno, " +
-        "COALESCE(a.curso, c.curso, '-') AS curso " +
-        "FROM utilizadores u " +
-        "LEFT JOIN alunos a ON a.utilizador_id = u.id " +
-        "LEFT JOIN coordenadores c ON c.utilizador_id = u.id " +
-        "ORDER BY u.id DESC"
+        "t.id, t.nome AS turma, t.tipo, t.capacidade_minima, t.capacidade_maxima, t.ativo, " +
+        "d.nome AS disciplina, d.codigo AS codigo_disciplina, " +
+        "COALESCE(ins.total_inscritos, 0) AS total_inscritos, " +
+        "COALESCE(h.lista_horarios, 'Horário ainda não definido') AS horario " +
+        "FROM turmas t " +
+        "INNER JOIN disciplinas d ON d.id = t.disciplina_id " +
+        "LEFT JOIN ( " +
+        "   SELECT turma_id, COUNT(*) AS total_inscritos " +
+        "   FROM inscricoes " +
+        "   WHERE estado = 'ATIVA' " +
+        "   GROUP BY turma_id " +
+        ") ins ON ins.turma_id = t.id " +
+        "LEFT JOIN ( " +
+        "   SELECT turma_id, " +
+        "   GROUP_CONCAT(CONCAT(dia_semana, ' ', TIME_FORMAT(hora_inicio, '%H:%i'), ' - ', TIME_FORMAT(hora_fim, '%H:%i'), ' | ', sala) SEPARATOR ' / ') AS lista_horarios " +
+        "   FROM horarios " +
+        "   GROUP BY turma_id " +
+        ") h ON h.turma_id = t.id " +
+        "ORDER BY t.id DESC"
     );
 
     rs = dbQuery(con, ps);
 
 } catch (Exception e) {
-    out.print("Erro ao carregar utilizadores: " + e.getMessage());
+    out.print("Erro ao carregar turmas: " + e.getMessage());
 }
 %>
 
@@ -41,7 +52,7 @@ try {
 <html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
-    <title>Gestão de Utilizadores - Gesturma</title>
+    <title>Gestão de Turmas - Gesturma</title>
     <link rel="stylesheet" href="../../css/geral.css">
 </head>
 
@@ -57,10 +68,9 @@ try {
 
         <nav class="menu">
             <a href="admin.jsp">Dashboard</a>
-
-            <a href="utilizadores.jsp" class="active">Gestão Utilizadores</a>
-            <a href="disciplinas.jsp"> Gestão de Disciplinas</a>
-            <a href="turmas.jsp"> Gestão de Turmas</a>
+            <a href="utilizadores.jsp">Gestão Utilizadores</a>
+            <a href="disciplinas.jsp">Gestão de Disciplinas</a>
+            <a href="turmas.jsp" class="active">Gestão de Turmas</a>
             <a href="inscricoes.jsp">Gestão de Inscrições</a>
             <a href="#" id="abrirPerfilLink"> Meu Perfil</a>
         </nav>
@@ -76,7 +86,7 @@ try {
 
         <header class="topbar">
             <div class="search-box">
-                <input type="text" placeholder="Pesquisar utilizadores...">
+                <input type="text" placeholder="Pesquisar turmas...">
             </div>
 
             <div class="topbar-right">
@@ -84,25 +94,25 @@ try {
                     <div class="user-avatar">A</div>
                     <div class="user-info">
                         <strong>Administrador</strong>
-                        <span>Gestão de Utilizadores</span>
+                        <span>Gestão de Turmas</span>
                     </div>
                 </div>
             </div>
         </header>
 
         <section class="page-header">
-            <h1>Gestão de Utilizadores</h1>
-            <p>Acesso exclusivo do administrador</p>
+            <h1>Gestão de Turmas</h1>
+            <p>Criação, consulta, edição e eliminação de turmas e horários.</p>
         </section>
 
         <section class="profile-section">
             <div class="profile-card">
 
                 <div class="crud-header">
-                    <h2>Lista de Utilizadores</h2>
+                    <h2>Lista de Turmas</h2>
 
-                    <a href="utilizador_criar.jsp" class="crud-btn">
-                        + Novo Utilizador
+                    <a href="turma_criar.jsp" class="crud-btn">
+                        + Nova Turma
                     </a>
                 </div>
 
@@ -111,13 +121,13 @@ try {
                     <table class="crud-table">
                         <thead>
                             <tr>
-                                <th>Nome</th>
-                                <th>Email</th>
-                                <th>Perfil</th>
-                                <th>Curso</th>
-                                <th>Nº Aluno</th>
+                                <th>Turma</th>
+                                <th>Disciplina</th>
+                                <th>Tipo</th>
+                                <th>Capacidade</th>
+                                <th>Inscritos</th>
+                                <th>Horário</th>
                                 <th>Estado</th>
-                                <th>Criado em</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -125,40 +135,47 @@ try {
                         <tbody>
 
                         <%
-                            boolean temUtilizadores = false;
+                            boolean temTurmas = false;
 
                             if (rs != null) {
                                 while (rs.next()) {
-                                    temUtilizadores = true;
+                                    temTurmas = true;
 
                                     int ativo = rs.getInt("ativo");
-                                    String estadoTexto = ativo == 1 ? "Ativo" : "Inativo";
+                                    String estadoTexto = ativo == 1 ? "Ativa" : "Inativa";
                                     String estadoClasse = ativo == 1 ? "estado-ativo" : "estado-inativo";
                         %>
 
                             <tr>
-                                <td><%= rs.getString("nome") %></td>
-                                <td><%= rs.getString("email") %></td>
+                                <td><%= rs.getString("turma") %></td>
                                 <td>
-                                    <span class="perfil-badge">
-                                        <%= rs.getString("perfil") %>
-                                    </span>
+                                    <%= rs.getString("disciplina") %>
+                                    (<%= rs.getString("codigo_disciplina") %>)
                                 </td>
-                                <td><%= rs.getString("curso") %></td>
-                                <td><%= rs.getString("numero_aluno") %></td>
+                                <td><%= rs.getString("tipo").replace("_", " ") %></td>
+                                <td>
+                                    Min: <%= rs.getInt("capacidade_minima") %><br>
+                                    Máx: <%= rs.getInt("capacidade_maxima") %>
+                                </td>
+                                <td><%= rs.getInt("total_inscritos") %></td>
+                                <td><%= rs.getString("horario") %></td>
                                 <td>
                                     <span class="<%= estadoClasse %>">
                                         <%= estadoTexto %>
                                     </span>
                                 </td>
-                                <td><%= rs.getString("criado_em") %></td>
                                 <td>
-                                    <a href="utilizador_editar.jsp?id=<%= rs.getInt("id") %>" class="btn-editar">
+                                    <a href="turma_editar.jsp?id=<%= rs.getInt("id") %>" class="btn-editar">
                                         Editar
                                     </a>
 
-                                   <a href="utilizador_eliminar.jsp?id=<%= rs.getInt("id") %>" class="btn-eliminar"
-                                     onclick="return confirm('Tens a certeza que queres eliminar/inativar este utilizador?');"> Eliminar</a>
+                                    <a 
+                                        href="turma_eliminar.jsp?id=<%= rs.getInt("id") %>" 
+                                        class="btn-eliminar"
+                                        onclick="return confirm('Tens a certeza que queres eliminar/inativar esta turma?');"
+                                    >
+                                        Eliminar
+                                    </a>
                                 </td>
                             </tr>
 
@@ -166,12 +183,12 @@ try {
                                 }
                             }
 
-                            if (!temUtilizadores) {
+                            if (!temTurmas) {
                         %>
 
                             <tr>
                                 <td colspan="8" class="empty-table-message">
-                                    Ainda não existem utilizadores registados.
+                                    Ainda não existem turmas registadas.
                                 </td>
                             </tr>
 
