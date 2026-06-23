@@ -20,20 +20,20 @@ try {
 
     ps = con.prepareStatement(
         "SELECT " +
-        "u.id, u.nome, u.email, u.perfil, u.ativo, " +
-        "DATE_FORMAT(u.criado_em, '%d/%m/%Y %H:%i') AS criado_em, " +
-        "COALESCE(a.numero_aluno, '-') AS numero_aluno, " +
-        "COALESCE(a.curso, c.curso, '-') AS curso " +
-        "FROM utilizadores u " +
-        "LEFT JOIN alunos a ON a.utilizador_id = u.id " +
-        "LEFT JOIN coordenadores c ON c.utilizador_id = u.id " +
-        "ORDER BY u.id DESC"
+        "d.id, d.nome, d.codigo, d.semestre, d.ano_letivo, " +
+        "d.numero_alunos_inscritos, d.ativo, " +
+        "u.nome AS coordenador_nome, " +
+        "c.curso AS coordenador_curso " +
+        "FROM disciplinas d " +
+        "INNER JOIN coordenadores c ON c.id = d.coordenador_id " +
+        "INNER JOIN utilizadores u ON u.id = c.utilizador_id " +
+        "ORDER BY d.id DESC"
     );
 
     rs = dbQuery(con, ps);
 
 } catch (Exception e) {
-    out.print("Erro ao carregar utilizadores: " + e.getMessage());
+    out.print("Erro ao carregar disciplinas: " + e.getMessage());
 }
 %>
 
@@ -41,7 +41,7 @@ try {
 <html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
-    <title>Gestão de Utilizadores - Gesturma</title>
+    <title>Gestão de Disciplinas - Gesturma</title>
     <link rel="stylesheet" href="../../css/geral.css">
 </head>
 
@@ -57,21 +57,14 @@ try {
 
         <nav class="menu">
             <a href="admin.jsp">Dashboard</a>
+            <a href="utilizadores.jsp">Utilizadores</a>
 
-            <a href="utilizadores.jsp" class="active">Gestão Utilizadores</a>
-
-            <a href="disciplinas.jsp">
+            <a href="disciplinas.jsp" class="active">
                 Gestão de Disciplinas
             </a>
 
-            <a href="turmas.jsp">
-                Gestão de Turmas
-            </a>
-
-            <a href="inscricoes.jsp">
-                Gestão de Inscrições
-            </a>
-             <a href="#" id="abrirPerfilLink"> Meu Perfil</a>
+            <a href="turmas.jsp">Gestão de Turmas</a>
+            <a href="inscricoes.jsp">Gestão de Inscrições</a>
         </nav>
 
         <div class="logout-area">
@@ -85,7 +78,7 @@ try {
 
         <header class="topbar">
             <div class="search-box">
-                <input type="text" placeholder="Pesquisar utilizadores...">
+                <input type="text" placeholder="Pesquisar disciplinas...">
             </div>
 
             <div class="topbar-right">
@@ -93,25 +86,25 @@ try {
                     <div class="user-avatar">A</div>
                     <div class="user-info">
                         <strong>Administrador</strong>
-                        <span>Gestão de Utilizadores</span>
+                        <span>Gestão de Disciplinas</span>
                     </div>
                 </div>
             </div>
         </header>
 
         <section class="page-header">
-            <h1>Gestão de Utilizadores</h1>
-            <p>Acesso exclusivo do administrador</p>
+            <h1>Gestão de Disciplinas</h1>
+            <p>Criação, consulta, edição e eliminação de disciplinas do sistema.</p>
         </section>
 
         <section class="profile-section">
             <div class="profile-card">
 
                 <div class="crud-header">
-                    <h2>Lista de Utilizadores</h2>
+                    <h2>Lista de Disciplinas</h2>
 
-                    <a href="utilizador_criar.jsp" class="crud-btn">
-                        + Novo Utilizador
+                    <a href="disciplina_criar.jsp" class="crud-btn">
+                        + Nova Disciplina
                     </a>
                 </div>
 
@@ -121,12 +114,13 @@ try {
                         <thead>
                             <tr>
                                 <th>Nome</th>
-                                <th>Email</th>
-                                <th>Perfil</th>
+                                <th>Código</th>
+                                <th>Coordenador</th>
                                 <th>Curso</th>
-                                <th>Nº Aluno</th>
+                                <th>Semestre</th>
+                                <th>Ano letivo</th>
+                                <th>Nº alunos</th>
                                 <th>Estado</th>
-                                <th>Criado em</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -134,40 +128,42 @@ try {
                         <tbody>
 
                         <%
-                            boolean temUtilizadores = false;
+                            boolean temDisciplinas = false;
 
                             if (rs != null) {
                                 while (rs.next()) {
-                                    temUtilizadores = true;
+                                    temDisciplinas = true;
 
                                     int ativo = rs.getInt("ativo");
-                                    String estadoTexto = ativo == 1 ? "Ativo" : "Inativo";
+                                    String estadoTexto = ativo == 1 ? "Ativa" : "Inativa";
                                     String estadoClasse = ativo == 1 ? "estado-ativo" : "estado-inativo";
                         %>
 
                             <tr>
                                 <td><%= rs.getString("nome") %></td>
-                                <td><%= rs.getString("email") %></td>
-                                <td>
-                                    <span class="perfil-badge">
-                                        <%= rs.getString("perfil") %>
-                                    </span>
-                                </td>
-                                <td><%= rs.getString("curso") %></td>
-                                <td><%= rs.getString("numero_aluno") %></td>
+                                <td><%= rs.getString("codigo") %></td>
+                                <td><%= rs.getString("coordenador_nome") %></td>
+                                <td><%= rs.getString("coordenador_curso") %></td>
+                                <td><%= rs.getInt("semestre") %></td>
+                                <td><%= rs.getString("ano_letivo") %></td>
+                                <td><%= rs.getInt("numero_alunos_inscritos") %></td>
                                 <td>
                                     <span class="<%= estadoClasse %>">
                                         <%= estadoTexto %>
                                     </span>
                                 </td>
-                                <td><%= rs.getString("criado_em") %></td>
                                 <td>
-                                    <a href="utilizador_editar.jsp?id=<%= rs.getInt("id") %>" class="btn-editar">
+                                    <a href="disciplina_editar.jsp?id=<%= rs.getInt("id") %>" class="btn-editar">
                                         Editar
                                     </a>
 
-                                   <a href="utilizador_eliminar.jsp?id=<%= rs.getInt("id") %>" class="btn-eliminar"
-                                     onclick="return confirm('Tens a certeza que queres eliminar/inativar este utilizador?');"> Eliminar</a>
+                                    <a 
+                                        href="disciplina_eliminar.jsp?id=<%= rs.getInt("id") %>" 
+                                        class="btn-eliminar"
+                                        onclick="return confirm('Tens a certeza que queres eliminar/inativar esta disciplina?');"
+                                    >
+                                        Eliminar
+                                    </a>
                                 </td>
                             </tr>
 
@@ -175,12 +171,12 @@ try {
                                 }
                             }
 
-                            if (!temUtilizadores) {
+                            if (!temDisciplinas) {
                         %>
 
                             <tr>
-                                <td colspan="8" class="empty-table-message">
-                                    Ainda não existem utilizadores registados.
+                                <td colspan="9" class="empty-table-message">
+                                    Ainda não existem disciplinas registadas.
                                 </td>
                             </tr>
 

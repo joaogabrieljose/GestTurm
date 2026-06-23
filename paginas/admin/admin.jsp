@@ -152,7 +152,7 @@ if (nomeAdmin != null && nomeAdmin.trim().length() > 0) {
 
             <a href="admin.jsp" class="active"> Dashboard</a>
             <a href="<%= request.getContextPath() %>/paginas/admin/utilizadores.jsp">Gestão Utilizadores</a>
-            <a href="#" id="abrirDisciplinasLink">Gestão de Disciplinas</a>
+            <a href="<%= request.getContextPath() %>/paginas/admin/disciplinas.jsp">Gestão de Disciplinas</a>
             <a href="#" id="abrirTurmasLink">Gestão de Turmas</a>
             <a href="#" id="abrirInscricoesLink">Gestão de Inscrições</a>
             <a href="#" id="abrirPerfilLink"> Meu Perfil</a>
