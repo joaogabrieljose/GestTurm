@@ -155,7 +155,8 @@ if (nomeAdmin != null && nomeAdmin.trim().length() > 0) {
             <a href="<%= request.getContextPath() %>/paginas/admin/disciplinas.jsp">Gestão de Disciplinas</a>
             <a href="turmas.jsp">Gestão de Turmas</a>
             <a href="inscricoes.jsp">Gestão de Inscrições</a>
-            <a href="#" id="abrirPerfilLink"> Meu Perfil</a>
+            <a href="perfil.jsp">Meu Perfil</a>
+
 
         </nav>
 
