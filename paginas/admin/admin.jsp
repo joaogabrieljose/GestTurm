@@ -151,7 +151,7 @@ if (nomeAdmin != null && nomeAdmin.trim().length() > 0) {
         <nav class="menu">
 
             <a href="admin.jsp" class="active"> Dashboard</a>
-            <a href="#" id="abrirUtilizadoresLink">Gestão Utilizadores</a>
+            <a href="<%= request.getContextPath() %>/paginas/admin/utilizadores.jsp">Gestão Utilizadores</a>
             <a href="#" id="abrirDisciplinasLink">Gestão de Disciplinas</a>
             <a href="#" id="abrirTurmasLink">Gestão de Turmas</a>
             <a href="#" id="abrirInscricoesLink">Gestão de Inscrições</a>
