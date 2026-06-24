@@ -200,7 +200,7 @@ if (nomeCoordenador != null && nomeCoordenador.trim().length() > 0) {
 
             <div class="profile-card">
 
-                <h2>Fluxo de inscrições </h2><br><br>
+                <h2>Fluxo coordenador </h2><br><br>
 
                 <div class="profile-grid">
 
