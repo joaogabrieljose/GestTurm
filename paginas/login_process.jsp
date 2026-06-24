@@ -85,7 +85,7 @@ try {
     if ("COORDENADOR".equalsIgnoreCase(perfil)) {
         response.sendRedirect(
             request.getContextPath() +
-            "/paginas/coordenador/dashboard.jsp"
+            "/paginas/coordenador/coordenador.jsp"
         );
         return;
     }
