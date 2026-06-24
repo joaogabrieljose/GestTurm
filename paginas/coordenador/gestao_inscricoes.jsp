@@ -200,15 +200,14 @@ if (nomeCoordenador != null && nomeCoordenador.trim().length() > 0) {
 
             <div class="profile-card">
 
-                <h2>Fluxo de inscrições </h2>
+                <h2>Fluxo de inscrições </h2><br><br>
 
                 <div class="profile-grid">
 
                     <div class="profile-item">
                         <span>Períodos de Inscrição</span>
                         <br><br>
-                        <a href="periodos.jsp" class="crud-btn">
-                            Gerir Períodos
+                        <a href="periodos.jsp" class="crud-btn">Gerir Períodos
                         </a>
                     </div>
 
@@ -236,7 +235,7 @@ if (nomeCoordenador != null && nomeCoordenador.trim().length() > 0) {
                         </a>
                     </div>
 
-                </div>
+                </div><br><br>
 
             </div>
 

@@ -259,7 +259,7 @@ if (nomeCoordenador != null && nomeCoordenador.trim().length() > 0) {
 
                 <div class="form-actions">
                     <a href="gestao_inscricoes.jsp" class="btn-voltar">
-                        Voltar à Gestão de Inscrições
+                        Voltar
                     </a>
                 </div>
 
