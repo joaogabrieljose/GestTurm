@@ -230,7 +230,7 @@ if (nomeCoordenador != null && nomeCoordenador.trim().length() > 0) {
                     <div class="profile-item">
                         <span>Estado das Inscrições</span>
                         <br><br>
-                        <a href="inscricoes.jsp" class="crud-btn">
+                        <a href="<%= request.getContextPath() %>/paginas/coordenador/estados.jsp" class="crud-btn">
                             Consultar Estados
                         </a>
                     </div>
