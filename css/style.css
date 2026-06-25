@@ -24,8 +24,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #947d00;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  background-color: #19b748;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -46,7 +46,7 @@ header {
   gap: 10px;
   font-size: 36px;
   font-weight: 700;
-  color: #06363d;
+  color: #ffffff;
   letter-spacing: -1px;
 }
 
@@ -63,7 +63,7 @@ header {
   position: absolute;
   width: 10px;
   height: 10px;
-  background-color: white;
+  background-color: #ffffff;
   right: -6px;
   bottom: -6px;
 }
@@ -89,12 +89,15 @@ nav a {
   color: #ffffff;
   font-size: 15px;
   font-weight: 700;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  padding: 8px 12px;
+  border-radius: 10px;
 }
 
 nav a:hover,
 nav a.active {
-  color: #3f3e37;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.18);
 }
 
 /* =========================
@@ -158,7 +161,7 @@ main {
 .btn-primary {
   display: inline-block;
   margin-top: 70px;
-  background-color: #534436;
+  background-color: #19b748;
   color: #ffffff;
   padding: 10px 18px;
   border-radius: 15px;
@@ -226,7 +229,7 @@ main {
   width: 315px;
   min-height: 135px;
   padding: 25px 28px;
-  background-color: #5f5621;
+  background-color: #ad1174;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 22px;
   color: #ffffff;
@@ -244,7 +247,7 @@ main {
 }
 
 .investment-header strong {
-  color: #00ff84;
+  color: #19b748;
   font-size: 16px;
 }
 
@@ -338,7 +341,7 @@ main {
 .course-card strong {
   display: block;
   font-size: 15px;
-  color: #947d00;
+  color: #19b748;
   font-weight: 800;
 }
 
@@ -849,3 +852,38 @@ main {
     font-size: 24px;
   }
 }
+
+.pagination-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 35px;
+      flex-wrap: wrap;
+    }
+
+    .pagination-btn {
+      border: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: #f1f5f9;
+      color: #1e293b;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .pagination-btn:hover {
+      background: #2563eb;
+      color: white;
+    }
+
+    .pagination-btn.active {
+      background: #2563eb;
+      color: white;
+    }
+
+    .pagination-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
